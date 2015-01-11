@@ -12,7 +12,7 @@ The gem is not yet tested and is still a work in progress! Use in on your own ri
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'easy_cdn'
+gem 'easy_cdn', :git => 'git://github.com/insignificantMe/easy_cdn.git'
 ```
 
 And then execute:
@@ -27,6 +27,7 @@ Or install it yourself as:
 
 First specify which files you want to be 'cdn'-ed like this:
 
+```ruby
 Rails.application.config.assets.easy_cdn_config = [
   {
     libs: [ {
@@ -37,9 +38,12 @@ Rails.application.config.assets.easy_cdn_config = [
     cdn: '//ajax.googleapis.com/ajax/libs/jquery/',
   },
 ]
+```
 
 Then just add
+```ruby
  <%= easy_cdn 'filetype', options_hash %>
+```
 
 Wherever you want the link or script tags included
 
@@ -51,10 +55,14 @@ The filetype argument could be:
 The options_hash argument would be used for creating tag attributes for the 
 generated tags e.g
 
+```ruby
 <%= easy_cdn 'css', 'data-turbolinks-track' => true %>
-
+```
 would generate
+
+```ruby
 &lt link href="the-link-configured-for-a-css-file" data-turbolinks-track="true" &gt
+```
 
 ## Contributing
 
@@ -63,3 +71,8 @@ would generate
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+## Trivia
+This gem was created because while developing http://yetanotherprettifier.com/
+I found only tailored cdn gems and not a single generic one. I hope it would be
+useful.
