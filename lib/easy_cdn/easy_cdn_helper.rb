@@ -12,7 +12,7 @@ module EasyCdn
     def prep_tags(resource, filetype, attributes)
       tags = ""
       resource.fetch(:libs).each do |lib|
-        tag = TAG_NAMES.fetch(lib.fetch(:ext));
+        tag = TAG_NAMES.fetch(lib.fetch(:ext).to_sym);
         if tag.nil? then
           tag = ['script', 'src']
         end
