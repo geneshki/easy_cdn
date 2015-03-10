@@ -5,7 +5,7 @@ It generates link or script tags for the specified files.
 
 ##WARNING
 ##Here be dragons!
-The gem is not yet tested and is still a work in progress! Use in on your own risk!
+The gem is not yet tested and is still a work in progress! Use it on your own risk!
 
 ## Installation
 
@@ -48,9 +48,11 @@ Then just add
 Wherever you want the link or script tags included
 
 The filetype argument could be:
+```
   1. 'all' - this is by default
   2. 'js'
   3. 'css'
+```
 
 The options_hash argument would be used for creating tag attributes for the 
 generated tags e.g
@@ -60,13 +62,13 @@ generated tags e.g
 ```
 would generate
 
-```ruby
-&lt link href="the-link-configured-for-a-css-file" data-turbolinks-track="true" &gt
+```html
+&lt; link href="the-link-configured-for-a-css-file" data-turbolinks-track="true" &gt;
 ```
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/easy_cdn/fork )
+1. Fork it ( https://github.com/insignificantMe/easy_cdn/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
