@@ -1,5 +1,5 @@
 module EasyCdn
-  module EasyCdnHelper 
+  module EasyCdnHelper
     def easy_cdn(filetype = "all", options = {})
       cdn_resources = Rails.application.config.assets.easy_cdn_config
       tags = ""
@@ -27,7 +27,7 @@ module EasyCdn
       result = ""
       if lib then
         parts = []
-        if Rails.env.development? or Rails.env.test?
+        if ENVIRONMENT.development? or ENVIRONMENT.test?
           parts = [
             '/assets/',
             lib.fetch(:name),
@@ -37,6 +37,7 @@ module EasyCdn
           parts = [
             cdn,
             lib.fetch(:version),
+            '/',
             lib.fetch(:name),
             '.min.'
           ]
@@ -46,7 +47,6 @@ module EasyCdn
       end
       result
     end
-
     def prep_options(options)
       result = ""
       if !options.empty?

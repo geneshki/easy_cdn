@@ -3,10 +3,6 @@
 This is a gem for easy cdn support of any library whatsoever for Ruby on Rails
 It generates link or script tags for the specified files.
 
-##WARNING
-##Here be dragons!
-The gem is not yet tested and is still a work in progress! Use it on your own risk!
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -63,7 +59,7 @@ generated tags e.g
 would generate
 
 ```html
-&lt; link href="the-link-configured-for-a-css-file" data-turbolinks-track="true" &gt;
+<link href="the-link-configured-for-a-css-file" data-turbolinks-track="true">
 ```
 
 ## Contributing

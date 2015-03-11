@@ -1,11 +1,43 @@
 require 'spec_helper'
-describe "the easy_cdn tag inclusion", type: :feature do
-  it 'adds links to head' do
+describe "in test env the easy_cdn tag inclusion", type: :feature do
+  before(:all) do
+    EasyCdn::EasyCdnHelper::ENVIRONMENT.env=ENV["RAILS_ENV"]
+  end
+  it 'adds local resources as links to head' do
     visit '/'
-
+    expect(page).to have_selector('link[href="/assets/test.css"][test="hash"]', visible: false)
   end
 
-  it 'adds scripts to bottom of body' do
+  it 'adds local resources as scripts to bottom of body' do
     visit '/'
+    expect(page).to have_selector('script[src="/assets/test.js"][test="jshash"]', visible: false)
+  end
+end
+describe "in dev env the easy_cdn tag inclusion", type: :feature do
+  before(:all) do
+    EasyCdn::EasyCdnHelper::ENVIRONMENT.env="development"
+  end
+  it 'adds local resources as links to head' do
+    visit '/'
+    expect(page).to have_selector('link[href="/assets/test.css"][test="hash"]', visible: false)
+  end
+
+  it 'adds local resources as scripts to bottom of body' do
+    visit '/'
+    expect(page).to have_selector('script[src="/assets/test.js"][test="jshash"]', visible: false)
+  end
+end
+describe "in prod env the easy_cdn tag inclusion", type: :feature do
+  before(:all) do
+    EasyCdn::EasyCdnHelper::ENVIRONMENT.env="production"
+  end
+  it 'adds public resources as links to head' do
+    visit '/'
+    expect(page).to have_selector('link[href="//test/cdn/1.0.0/test.min.css"][test="hash"]', visible: false)
+  end
+
+  it 'adds public resources as scripts to bottom of body' do
+    visit '/'
+    expect(page).to have_selector('script[src="//test/cdn/1.0.0/test.min.js"][test="jshash"]', visible: false)
   end
 end

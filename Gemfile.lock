@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    easy_cdn (0.1)
+    easy_cdn (0.2)
       rails (~> 4.1.9)
 
 GEM
