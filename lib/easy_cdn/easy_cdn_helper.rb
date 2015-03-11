@@ -11,39 +11,40 @@ module EasyCdn
     end
     def prep_tags(resource, filetype, attributes)
       tags = ""
-      resource.fetch(:libs).each do |lib|
-        tag = TAG_NAMES.fetch(lib.fetch(:ext).to_sym);
+        tag = TAG_NAMES.fetch(resource.fetch(:ext).to_sym);
         if tag.nil? then
           tag = ['script', 'src']
         end
-        if filetype == "all" or lib.fetch(:ext).eql?(filetype) then
-          src = prep_path resource.fetch(:cdn), lib
+        if filetype == "all" or resource.fetch(:ext).eql?(filetype) then
+          cdn = resource.fetch(:cdn)
+          lib = resource.fetch(:lib)
+          ext = resource.fetch(:ext)
+          src = prep_path cdn, lib, ext 
           tags += "<#{tag[0]} #{tag[1]}='#{src}' #{attributes}></#{tag[0]}>\n"
         end
-      end
       tags
     end
-    def prep_path(cdn, lib)
+    def prep_path(cdn, lib, ext)
       result = ""
+      parts = []
       if lib then
-        parts = []
         if ENVIRONMENT.development? or ENVIRONMENT.test?
           parts = [
             '/assets/',
-            lib.fetch(:name),
-            '.'
+            lib,
+            '.',
+            ext,
           ]
+          result = parts.join
         else
           parts = [
             cdn,
-            lib.fetch(:version),
-            '/',
-            lib.fetch(:name),
-            '.min.'
+            lib,
+            '.min.',
+            ext,
           ]
+          result = parts.join 
         end
-          result += parts.join
-          result += lib.fetch(:ext)
       end
       result
     end

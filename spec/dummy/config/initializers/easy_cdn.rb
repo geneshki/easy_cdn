@@ -13,16 +13,13 @@
 #]
 Rails.application.config.assets.easy_cdn_config = [
   {
-    libs: [ {
-      name: 'test',
-      version: '1.0.0',
-      ext: 'js'
-    },
-    {
-      name: 'test',
-      version: '1.0.0',
-      ext: 'css'
-    } ],
-    cdn: '//test/cdn/',
+    lib: "test",
+    cdn: '//test/cdn/1.0.0/',
+    ext: "css"
+  },
+  {
+    lib: "test",
+    cdn: '//test/cdn/1.0.0/',
+    ext: "js"
   },
 ]
