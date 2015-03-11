@@ -26,15 +26,13 @@ First specify which files you want to be 'cdn'-ed like this:
 ```ruby
 Rails.application.config.assets.easy_cdn_config = [
   {
-    libs: [ {
-      name: 'jquery',
-      version: Jquery::Rails::JQUERY_VERSION,
-      ext: 'js'
-    }],
-    cdn: '//ajax.googleapis.com/ajax/libs/jquery/',
+    lib: 'jquery',
+    ext: 'js'
+    cdn: "//ajax.googleapis.com/ajax/libs/jquery/#{JQUERY_VERSION}/",
   },
 ]
 ```
+Where ```JQUERY_VERSION``` should be a variable holding your version of the library 
 
 Then just add
 ```ruby
