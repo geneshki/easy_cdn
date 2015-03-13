@@ -19,22 +19,34 @@ module EasyCdn
           cdn = resource.fetch(:cdn)
           lib = resource.fetch(:lib)
           ext = resource.fetch(:ext)
-          src = prep_path cdn, lib, ext 
+          local_dir = resource.fetch(:local_dir, '')
+          src = prep_path cdn, lib, ext, local_dir 
           tags += "<#{tag[0]} #{tag[1]}='#{src}' #{attributes}></#{tag[0]}>\n"
         end
       tags
     end
-    def prep_path(cdn, lib, ext)
+    def prep_path(cdn, lib, ext, local_dir)
       result = ""
       parts = []
       if lib then
         if ENVIRONMENT.development? or ENVIRONMENT.test?
-          parts = [
-            '/assets/',
-            lib,
-            '.',
-            ext,
-          ]
+          if local_dir.nil? or local_dir.empty? then
+            parts = [
+              '/assets/',
+              lib,
+              '.',
+              ext,
+            ]
+          else
+            parts = [
+              '/assets/',
+              local_dir,
+              '/',
+              lib,
+              '.',
+              ext,
+            ]
+          end
           result = parts.join
         else
           parts = [
