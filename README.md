@@ -27,6 +27,7 @@ First specify which files you want to be 'cdn'-ed like this:
 Rails.application.config.assets.easy_cdn_config = [
   {
     lib: 'jquery',
+    local_dir: 'the/subdirectory/of/the/local/library' #this field is optional
     ext: 'js'
     cdn: "//ajax.googleapis.com/ajax/libs/jquery/#{JQUERY_VERSION}/",
   },
