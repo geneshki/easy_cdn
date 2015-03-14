@@ -74,6 +74,10 @@ would generate
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
 
+### Codestyle
+
+This gem is meant to use TDD and it would be a requirement for your contributions.
+
 ## Trivia
 This gem was created because while developing http://yetanotherprettifier.com/
 I found only tailored cdn gems and not a single generic one. I hope it would be
