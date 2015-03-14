@@ -34,6 +34,8 @@ Rails.application.config.assets.easy_cdn_config = [
 ]
 ```
 Where ```JQUERY_VERSION``` should be a variable holding your version of the library 
+This configuration usually sits in ```config/initializers/easy_cdn.rb``` but the 
+name of the file is not important
 
 Then just add
 ```ruby
