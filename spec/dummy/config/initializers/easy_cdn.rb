@@ -18,8 +18,26 @@ Rails.application.config.assets.easy_cdn_config = [
     ext: "css"
   },
   {
+    lib: "nocdn_test",
+    ext: "css"
+  },
+  {
+    lib: "test",
+    local_dir: "no_cdn_subdir",
+    ext: "css"
+  },
+  {
     lib: "test",
     cdn: '//test/cdn/1.0.0/',
+    ext: "js"
+  },
+  {
+    lib: "no_cdn_test",
+    ext: "js"
+  },
+  {
+    lib: "no_cdn_test",
+    local_dir: "no_cdn_dir",
     ext: "js"
   },
   {

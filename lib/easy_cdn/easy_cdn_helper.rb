@@ -16,7 +16,7 @@ module EasyCdn
           tag = ['script', 'src']
         end
         if filetype == "all" or resource.fetch(:ext).eql?(filetype) then
-          cdn = resource.fetch(:cdn)
+          cdn = resource.fetch(:cdn, '')
           lib = resource.fetch(:lib)
           ext = resource.fetch(:ext)
           local_dir = resource.fetch(:local_dir, '')
@@ -29,7 +29,7 @@ module EasyCdn
       result = ""
       parts = []
       if lib then
-        if ENVIRONMENT.development? or ENVIRONMENT.test?
+        if ENVIRONMENT.development? or ENVIRONMENT.test? or cdn.empty? then
           if local_dir.nil? or local_dir.empty? then
             parts = [
               '/assets/',
