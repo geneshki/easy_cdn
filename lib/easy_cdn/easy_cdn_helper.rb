@@ -29,7 +29,14 @@ module EasyCdn
       result = ""
       parts = []
       if lib then
-        if ENVIRONMENT.development? or ENVIRONMENT.test? or cdn.empty? then
+        if ENVIRONMENT.production? && cdn.present? then
+          parts = [
+            cdn,
+            lib,
+            '.min.',
+            ext,
+          ]
+        else
           if local_dir.nil? or local_dir.empty? then
             parts = [
               '/assets/',
@@ -47,16 +54,8 @@ module EasyCdn
               ext,
             ]
           end
-          result = parts.join
-        else
-          parts = [
-            cdn,
-            lib,
-            '.min.',
-            ext,
-          ]
-          result = parts.join 
         end
+        result = parts.join 
       end
       result
     end

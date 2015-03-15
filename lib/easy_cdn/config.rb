@@ -25,6 +25,9 @@ module EasyCdn
       def development?
         @env.eql? "development"
       end
+      def production?
+        @env.eql? "production"
+      end
     end
     public
 
