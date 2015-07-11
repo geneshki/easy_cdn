@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     easy_cdn (0.3.3)
-      rails (~> 4.1.9)
+      rails (>= 4.1.9)
 
 GEM
   remote: https://rubygems.org/
@@ -139,3 +139,6 @@ DEPENDENCIES
   factory_girl_rails
   rspec-rails
   sqlite3
+
+BUNDLED WITH
+   1.10.5
